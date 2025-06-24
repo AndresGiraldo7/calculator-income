@@ -39,7 +39,7 @@ function calcularTotalPagarLuz() {
 }
 //------------------------------------//Calculadora de Agua
 
-document.getElementById('generar-familias').addEventListener('click', () => {
+document.getElementById('generar-familias').addEventListener('click', (e) => {
     e.preventDefault();
     const numeroFamilias = parseInt(document.getElementById('numero-familias').value, 10);
     const container = document.getElementById('familias-container');
@@ -206,48 +206,54 @@ async function exportarTablaAPdf(nombre, headers, data, archivo = 'resumen_consu
     doc.save(archivo);
 }
 
-document.getElementById('exportar-todo-pdf').addEventListener('click', () => {
-    e.preventDefault(); 
-    const headers = Array.from(document.querySelectorAll('#tabla-resultados thead th')).map(th => th.textContent.trim());
-    const rows = Array.from(document.querySelectorAll('#tabla-resultados tbody tr')).map(tr =>
-        Array.from(tr.querySelectorAll('td')).map(td => td.textContent.trim())
-    );
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text("Resumen de Consumo por Familias", 14, 20);
+document.addEventListener('DOMContentLoaded', () => {
 
-    doc.autoTable({
-        startY: 30,
-        head: [headers],
-        body: rows,
-        styles: {
-            fontSize: 10,
-            halign: 'center'
-        },
-        headStyles: {
-            fillColor: [41, 128, 185],
-            textColor: 255
-        },
-        theme: 'striped'
+
+    document.getElementById('exportar-todo-pdf').addEventListener('click', (e) => {
+        e.preventDefault();
+        const headers = Array.from(document.querySelectorAll('#tabla-resultados thead th')).map(th => th.textContent.trim());
+        const rows = Array.from(document.querySelectorAll('#tabla-resultados tbody tr')).map(tr =>
+            Array.from(tr.querySelectorAll('td')).map(td => td.textContent.trim())
+        );
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.setFontSize(16);
+        doc.text("Resumen de Consumo por Familias", 14, 20);
+
+        doc.autoTable({
+            startY: 30,
+            head: [headers],
+            body: rows,
+            styles: {
+                fontSize: 10,
+                halign: 'center'
+            },
+            headStyles: {
+                fillColor: [41, 128, 185],
+                textColor: 255
+            },
+            theme: 'striped'
+        });
+
+        doc.save('consumo_total.pdf');
     });
 
-    doc.save('consumo_total.pdf');
-});
+    document.getElementById('exportar-familia-pdf').addEventListener('click', (e) => {
+        e.preventDefault();
+        const selectedIndex = document.getElementById('familia-select').value;
+        if (selectedIndex === "") {
+            alert("Seleccione una familia para exportar");
+            return;
+        }
 
-document.getElementById('exportar-familia-pdf').addEventListener('click', () => {
-    e.preventDefault(); 
-    const selectedIndex = document.getElementById('familia-select').value;
-    if (selectedIndex === "") {
-        alert("Seleccione una familia para exportar");
-        return;
-    }
+        const headers = Array.from(document.querySelectorAll('#tabla-resultados thead th')).map(th => th.textContent.trim());
+        const tr = document.querySelectorAll('#tabla-resultados tbody tr')[selectedIndex];
+        const data = Array.from(tr.querySelectorAll('td')).map(td => td.textContent.trim());
+        const nombre = data[0];
 
-    const headers = Array.from(document.querySelectorAll('#tabla-resultados thead th')).map(th => th.textContent.trim());
-    const tr = document.querySelectorAll('#tabla-resultados tbody tr')[selectedIndex];
-    const data = Array.from(tr.querySelectorAll('td')).map(td => td.textContent.trim());
-    const nombre = data[0];
+        exportarTablaAPdf(nombre, headers, data, `consumo_${nombre.replace(/\s+/g, '_')}.pdf`);
+    });
 
-    exportarTablaAPdf(nombre, headers, data, `consumo_${nombre.replace(/\s+/g, '_')}.pdf`);
 });
