@@ -40,6 +40,7 @@ function calcularTotalPagarLuz() {
 //------------------------------------//Calculadora de Agua
 
 document.getElementById('generar-familias').addEventListener('click', () => {
+    e.preventDefault();
     const numeroFamilias = parseInt(document.getElementById('numero-familias').value, 10);
     const container = document.getElementById('familias-container');
 
@@ -141,12 +142,10 @@ function calcularConsumos() {
         const alcantarillado = valorMetroAlcantarillado * metrosConsumidos;
 
         const total = (
-            cargoAcueducto +
-            cargoAlcantarillado +
-            basura +
+            (cargoAcueducto + cargoAlcantarillado + basura) * factorDias +
             agua +
             alcantarillado
-        ) * factorDias;
+        );
 
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -208,6 +207,7 @@ async function exportarTablaAPdf(nombre, headers, data, archivo = 'resumen_consu
 }
 
 document.getElementById('exportar-todo-pdf').addEventListener('click', () => {
+    e.preventDefault(); 
     const headers = Array.from(document.querySelectorAll('#tabla-resultados thead th')).map(th => th.textContent.trim());
     const rows = Array.from(document.querySelectorAll('#tabla-resultados tbody tr')).map(tr =>
         Array.from(tr.querySelectorAll('td')).map(td => td.textContent.trim())
@@ -237,6 +237,7 @@ document.getElementById('exportar-todo-pdf').addEventListener('click', () => {
 });
 
 document.getElementById('exportar-familia-pdf').addEventListener('click', () => {
+    e.preventDefault(); 
     const selectedIndex = document.getElementById('familia-select').value;
     if (selectedIndex === "") {
         alert("Seleccione una familia para exportar");
