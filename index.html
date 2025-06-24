@@ -1,146 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Calculadora de servicios publicos</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-            <div class="container"><br>
-                <a class="navbar-brand" href="#page-top">Calcular servicios</a>
-                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Calcularadora de Luz</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Calcularadora de Agua</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Calcularadora de Gas</a></li>
-                    </ul>
-                </div>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calculadora de Servicios Públicos</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:400;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+
+    <!-- Bootstrap + Estilos -->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">Calcular Servicios</a>
+            <button class="navbar-toggler text-white bg-primary rounded" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-label="Menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto text-center">
+                    <li class="nav-item"><a class="nav-link px-3" href="#portfolio">Luz</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#about">Agua</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#contact">Gas</a></li>
+                </ul>
             </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="bg-primary text-white text-center">
-         
-        </header>
-        <!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Calcularadora de Luz</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="card">
-                            <div class="card-body d-flex flex-column align-items-start justify-content-center">
-                              <div class="input-group">
-                                <h5>Media Anterior &nbsp </h5><br>
-                                <input type="number" name="medida-anterior">
-                              </div>
-                              <div class="input-group">
-                                <h5> &nbsp Media Actual &nbsp &nbsp</h5>
-                                <input type="number" name="medida-actual">
-                              </div>
-                              <div class="input-group">
-                                <h5 style="color:mediumseagreen">Vatios Consumidos</h5>
-                                <input type="number" name="total-consumo" readonly>
-                              </div>
-                              <div class="input-group">
-                                <h5>Valor Vatio Mes Actual</h5>
-                                <input type="number" name="valor-vatio">
-                              </div>
-                            </div>
-                          </div>
-                    </div>  
-                    <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="input-group">
-                                    <h5 class="bg-primary" >Total a Pagar Luz &nbsp&nbsp&nbsp</h5>
-                                    <p id="total-pagar-display"><span>$</span><span id="total-pagar-value">0.00</span></p>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="bg-primary text-white text-center py-5 mt-5">
+        <h1 class="fw-bold">Calculadora de Servicios Públicos</h1>
+    </header>
+
+    <!-- Calculadora de Luz -->
+    <section class="page-section" id="portfolio">
+        <div class="container">
+            <h2 class="text-center text-uppercase text-secondary mb-4">Calculadora de Luz</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+
+            <div class="row justify-content-center">
+                <!-- Formulario de Luz -->
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="form-luz">
+                                <div class="mb-3">
+                                    <label for="medida-anterior-luz" class="form-label fw-bold fs-5">Media
+                                        Anterior</label>
+                                    <input type="number" class="form-control" id="medida-anterior-luz"
+                                        name="medida-anterior">
                                 </div>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="medida-actual-luz" class="form-label fw-bold fs-5">Media Actual</label>
+                                    <input type="number" class="form-control" id="medida-actual-luz"
+                                        name="medida-actual">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="total-consumo-luz" class="form-label fw-bold fs-5 text-success">Vatios
+                                        Consumidos</label>
+                                    <input type="number" class="form-control" id="total-consumo-luz"
+                                        name="total-consumo" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="valor-vatio-luz" class="form-label fw-bold fs-5">Valor del vatio mes
+                                        Actual</label>
+                                    <input type="number" class="form-control" id="valor-vatio-luz" name="valor-vatio">
+                                </div>
+                            </form>
                         </div>
                     </div>
-            
-    
+                </div>
+
+                <!-- Resultado -->
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Total a Pagar Luz</h5>
+                            <p class="fs-4 fw-bold text-success">
+                                $<span id="total-pagar-value-luz">0.00</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-        <!-- About Section-->
-        <section class="page-section bg-primary text-white mb-0" id="about">
-            <div class="container">
-                <!-- About Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-white">Calcularadora de Agua</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- About Section Content-->
-               
+        </div>
+    </section>
 
+    <!-- Calculadora de Agua -->
+    <section class="page-section bg-primary text-white" id="about">
+        <div class="container">
+            <h2 class="text-center text-uppercase">Calculadora de Agua</h2>
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-tint"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
 
-                
-        </section>
-        <!-- Contact Section-->
-        <section class="page-section" id="contact">
-            <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Calculadora de Gas</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
+            <!-- Formulario principal -->
+            <form id="form-agua" class="bg-white text-dark p-4 rounded">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold fs-5">Cargo Fijo Acueducto</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" name="cargo-acueducto" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold fs-5">Cargo Fijo Alcantarillado</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" name="cargo-alcantarillado" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold fs-5">Basura</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" name="basura" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold fs-5">Valor metro Agua</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" name="metros-agua" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold fs-5">Valor metro Alcantarillado</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" name="metros-alcantarillado" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold fs-5">Número de Familias</label>
+                        <input type="number" class="form-control" id="numero-familias" name="familias" min="1" required>
+                    </div>
                 </div>
-                <!-- Contact Section Form-->
-                <div class="row justify-content-center">
-                   
-                    
+
+                <div class="mt-4">
+                    <button type="button" class="btn btn-outline-primary w-100" id="generar-familias">
+                        Generar Familias
+                    </button>
+                </div>
+            </form>
+
+            <!-- Contenedor dinámico de datos por familia -->
+            <div id="familias-container" class="mt-4"></div>
+
+            <!-- Tabla de resultados -->
+            <div id="seccion-resumen" class="mt-5" style="display: none;">
+                <h4 class="text-white">Resumen por Familia</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped bg-white text-dark" id="tabla-resultados">
+                        <thead class="table-secondary">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Cargo Acueducto</th>
+                                <th>Cargo Alcantarillado</th>
+                                <th>Basura</th>
+                                <th>Metros Agua</th>
+                                <th>Metros Alcantarillado</th>
+                                <th>Días Facturados</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-outline-danger w-100" id="exportar-todo-pdf">
+                            Exportar Toda la Tabla (PDF)
+                        </button>
+                    </div>
+                    <div class="col-md-6 d-flex gap-2 align-items-end">
+                        <select id="familia-select" class="form-select me-2">
+                            <option value="">Seleccione una familia</option>
+                        </select>
+                        <button type="button" class="btn btn-outline-danger" id="exportar-familia-pdf">
+                            Exportar Familia (PDF)
+                        </button>
+                    </div>
                 </div>
             </div>
-        </section>
-        <!-- Footer-->
-        <footer class=" text-center">
-       
-        </footer>
-   
+        </div>
+    </section>
 
-       
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <script src="js/calculator.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+
+
+
+    <!-- Calculadora de Gas -->
+    <section class="page-section" id="contact">
+        <div class="container">
+            <h2 class="text-center text-uppercase text-secondary mb-4">Calculadora de Gas</h2>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Contenido pendiente -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">© 2025 Calculadora de Servicios Públicos</p>
+        </div>
+    </footer>
+
+    <!-- JS Bootstrap y Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/calculator.js"></script>
+</body>
+
 </html>
